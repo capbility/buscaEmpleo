@@ -44,3 +44,16 @@ Ejecuta el archivo main.py
 ```bash
 python main.py
 ```
+
+Los resultados de la búsqueda se almacenarán en un archivo llamado `jobs.csv`, con la siguiente estructura:
+
+```csv
+Título del Puesto,Empresa,Enlace,Ubicación
+```
+
+## ⚠️ Limitaciones Actuales
+
+- 🔍 **Búsqueda restringida**: Por ahora, solo se buscan empleos para personas con discapacidad en el área de marketing.  
+- 📋 **Número de resultados**: Solo se seleccionan las **primeras 3 ofertas** encontradas.  
+- 🛠️ **En desarrollo**: Planeamos expandir las funcionalidades en futuras versiones.
+
