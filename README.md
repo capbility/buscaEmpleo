@@ -45,6 +45,8 @@ Ejecuta el archivo main.py
 python main.py
 ```
 
+Se mostrará un menú en el que el usuario debe ingresar palabras clave relacionadas con el empleo que está buscando. Luego, se le pedirá que indique si tiene alguna discapacidad, respondiendo 'sí' o 'no'. Finalmente, el usuario podrá seleccionar cuántas ofertas de empleo desea guardar. Si ingresa un número mayor a 5, el programa automáticamente ajustará este valor a 5.
+
 Los resultados de la búsqueda se almacenarán en un archivo llamado `jobs.csv`, con la siguiente estructura:
 
 ```csv
@@ -53,7 +55,8 @@ Título del Puesto,Empresa,Enlace,Ubicación
 
 ## ⚠️ Limitaciones Actuales
 
-- 🔍 **Búsqueda restringida**: Por ahora, solo se buscan empleos para personas con discapacidad en el área de marketing.  
-- 📋 **Número de resultados**: Solo se seleccionan las **primeras 3 ofertas** encontradas.  
+- 🔍 **Búsqueda en una sola plataforma**: Solo busca en la web de Bumeran Perú. 
+- 🔍 **Búsqueda sin salario**: Los resultados no muestran el salario.
+- 📋 **Número de resultados**: Solo se seleccionan como máximo las **primeras 5 ofertas** encontradas.  
 - 🛠️ **En desarrollo**: Planeamos expandir las funcionalidades en futuras versiones.
 

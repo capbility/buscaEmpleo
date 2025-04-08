@@ -12,16 +12,37 @@ browser = Browser(
     )
 )
 
-async def run_job_finder():
+async def run_job_finder(palabra_clave, es_discapacidad, cantidad_ofertas):
     llm = ChatGoogleGenerativeAI(model=MODEL, api_key=GEMINI_API_KEY)
+    
+    diccionario = {
+        1: "one",
+        2: "two",
+        3: "three",
+        4: "four",
+        5: "five"
+    }
+
+    if cantidad_ofertas in diccionario:
+        cantidad_ofertas =  diccionario[cantidad_ofertas]
+    else:
+        cantidad_ofertas = diccionario[5]
+
     ground_task = (
         'You are a professional job finder.'
-        'find "empleo marketing personas con discapacidad"'
-        'got to first result of:'
+        'find "empleo ' + palabra_clave + (' postulantes con discapacidad' if es_discapacidad else '') + '"'
+        'go to first result of:'
     )
+
+    #ground_task = (
+    #    'You are a professional job finder.'
+    #    'find "empleo marketing personas con discapacidad"'
+    #    'got to first result of:'
+    #)
+    
     tasks = [
         ground_task + '\n' + 'bumeran.com.pe'
-        + 'Save the first three jobs with save_jobs'
+        + ' Save the first '+ cantidad_ofertas +' jobs with save_jobs'
     ]
 
     agents = [] 
