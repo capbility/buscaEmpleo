@@ -2,9 +2,12 @@ from browser_use import Agent
 from langchain_google_genai import ChatGoogleGenerativeAI
 from browser_use.browser.browser import Browser, BrowserConfig
 from browser_use.browser.context import BrowserContextConfig
-from config.settings import GEMINI_API_KEY, MODEL
+#from config.settings import GEMINI_API_KEY, MODEL
+from config.settings import OPENAI_API_KEY, MODEL
+
 from controllers.job_controller import controller
 import asyncio
+from langchain_openai import ChatOpenAI
 
 browser = Browser(
     config=BrowserConfig(
@@ -13,7 +16,8 @@ browser = Browser(
 )
 
 async def run_job_finder(palabra_clave, es_discapacidad, cantidad_ofertas):
-    llm = ChatGoogleGenerativeAI(model=MODEL, api_key=GEMINI_API_KEY)
+    #llm = ChatGoogleGenerativeAI(model=MODEL, api_key=GEMINI_API_KEY)
+    llm = ChatOpenAI(model=MODEL)
     
     diccionario = {
         1: "one",
