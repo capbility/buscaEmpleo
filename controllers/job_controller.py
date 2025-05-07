@@ -4,8 +4,12 @@ from browser_use import ActionResult, Controller
 from pydantic import BaseModel
 from typing import Optional
 
+import datetime
+
 controller = Controller()
-JOBS_CSV = Path.cwd() / 'jobs.csv'
+timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+JOBS_CSV = Path.cwd() / f'jobs_{timestamp}.csv'
+
 
 class Job(BaseModel):
     title: str

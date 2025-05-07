@@ -4,14 +4,6 @@ from browser_use.browser.context import BrowserContextConfig
 from controllers.job_controller import controller
 import asyncio
 
-#from config.settings import GEMINI_API_KEY, MODEL
-#from langchain_google_genai import ChatGoogleGenerativeAI
-
-#from config.settings import OPENAI_API_KEY, MODEL
-#from langchain_openai import ChatOpenAI
-
-###
-
 from config.settings import PROVIDER, API_KEY, MODEL
 
 if PROVIDER == "gemini":
@@ -23,8 +15,6 @@ elif PROVIDER == "openai":
 else:
     raise ValueError("Proveedor no válido. Usa 'gemini' o 'openai'.")
 
-####
-
 browser = Browser(
     config=BrowserConfig(
         new_context_config=BrowserContextConfig(viewport_expansion=0)
@@ -32,9 +22,6 @@ browser = Browser(
 )
 
 async def run_job_finder(palabra_clave, es_discapacidad, cantidad_ofertas):
-    #llm = ChatGoogleGenerativeAI(model=MODEL, api_key=GEMINI_API_KEY)
-    #llm = ChatGoogleGenerativeAI(model=MODEL, api_key=API_KEY)
-    #llm = ChatOpenAI(model=MODEL)
     
     diccionario = {
         1: "one",
@@ -63,7 +50,7 @@ async def run_job_finder(palabra_clave, es_discapacidad, cantidad_ofertas):
     
     tasks = [
         ground_task + '\n' + 'bumeran.com.pe'
-        + ' Save the first '+ cantidad_ofertas +' jobs with save_jobs'
+        + ' Open the first '+ cantidad_ofertas +' and save jobs with save_jobs'
     ]
 
     agents = [] 
@@ -73,4 +60,5 @@ async def run_job_finder(palabra_clave, es_discapacidad, cantidad_ofertas):
 	
     await asyncio.gather(*[agent.run() for agent in agents])
 
+    browser.close()
 
