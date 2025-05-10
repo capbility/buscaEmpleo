@@ -10,7 +10,7 @@ import csv
 import glob
 
 app = Flask(__name__)
-
+entorno = os.name
 @app.route('/')
 def index():
     directorio = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -26,20 +26,36 @@ def index():
         if not os.path.exists(ruta_csv):
             return jsonify({'data': []})
         data = []
-        with open(ruta_csv, 'r', encoding='utf-8') as f:
-            reader = csv.reader(f)
-            for row in reader:
-                if not row:  # evita filas vacías
-                    continue
-                data.append({
-                    'title': row[0],
-                    'company': row[1],
-                    'link': row[2],
-                    'salary': row[3],
-                    'location': row[4]
-                })
-        
-        return render_template('index.html', resultados=data)
+        if entorno == 'nt':
+            with open(ruta_csv, 'r', encoding='latin1') as f:
+                reader = csv.reader(f)
+                for row in reader:
+                    if not row:  # evita filas vacías
+                        continue
+                    data.append({
+                        'title': row[0],
+                        'company': row[1],
+                        'link': row[2],
+                        'salary': row[3],
+                        'location': row[4]
+                    })
+
+            return render_template('index.html', resultados=data)
+        else: 
+            with open(ruta_csv, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f)
+                for row in reader:
+                    if not row:  # evita filas vacías
+                        continue
+                    data.append({
+                        'title': row[0],
+                        'company': row[1],
+                        'link': row[2],
+                        'salary': row[3],
+                        'location': row[4]
+                    })
+
+            return render_template('index.html', resultados=data)
     else:
         return render_template('index.html')
 
