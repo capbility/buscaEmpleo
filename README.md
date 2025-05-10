@@ -1,6 +1,6 @@
 # buscaEmpleo
 
-👷👷‍♀️ Pequeño sistema multiagente diseñado para buscar automáticamente ofertas laborales en internet, especialmente para personas con discapacidad.
+👷👷‍♀️ Pequeño sistema de agente diseñado para buscar automáticamente ofertas laborales en internet, especialmente para personas con discapacidad.
 
 ![buscaEmpleo-ui](https://github.com/user-attachments/assets/648a9aec-81a7-4af5-89b5-55288e2d0718)
 
@@ -26,10 +26,10 @@ git clone https://github.com/capbility/buscaEmpleo.git
 Instala las dependencias en requirements.txt
 
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
-Preparamos playwright para controlar el navegador
+Preparamos playwright para controlar la navegación usando una versión de chromium
 
 ```bash
 playwright install chromium
