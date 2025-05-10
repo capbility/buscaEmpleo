@@ -60,5 +60,5 @@ async def run_job_finder(palabra_clave, es_discapacidad, cantidad_ofertas):
 	
     await asyncio.gather(*[agent.run() for agent in agents])
 
-    browser.close()
+    await browser.close()
 
